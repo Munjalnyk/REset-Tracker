@@ -1,3 +1,9 @@
+DEMO Website
+
+https://reset-tracker-test.vercel.app/
+
+Password = "reset110"
+
 # Reset
 
 A single-file, offline-first fitness and nutrition tracker for people losing weight with a volumetric, high-protein Indian-friendly meal plan. Built around a 7-day meal rotation, grocery budget tracking with price analytics, and weight/measurement logging — all in one `index.html` with no build step, no server, and no account.
