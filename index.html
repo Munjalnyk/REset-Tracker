@@ -233,6 +233,66 @@
   .g-expand-actions { grid-column: 1 / -1; display: flex; gap: 8px; justify-content: flex-end; font-family: var(--mono); font-size: 10px; color: var(--ink-faint); }
   .g-expand-actions span { font-weight: 600; color: var(--accent); }
 
+  /* qty combo input (number + unit dropdown) */
+  .qty-combo { display: grid; grid-template-columns: 1fr 60px; gap: 4px; }
+  .qty-combo input { width: 100%; }
+  .qty-combo select {
+    background: var(--bg); border: 1px solid var(--line); color: var(--ink);
+    padding: 9px 6px; border-radius: 6px; font-family: var(--mono); font-size: 12px;
+    outline: none; appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23a59b86' stroke-width='1.5' fill='none'/></svg>");
+    background-repeat: no-repeat; background-position: right 6px center; padding-right: 20px;
+    text-align: center;
+  }
+  .qty-combo select:focus { border-color: var(--accent); }
+
+  /* customize list editor */
+  .manage-cat {
+    background: var(--bg-card); border: 1px solid var(--line-soft); border-radius: 10px;
+    margin-bottom: 10px; padding: 12px 14px;
+  }
+  .manage-cat-head {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;
+  }
+  .manage-cat-name {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--accent); flex: 1;
+    background: transparent; border: none; outline: none;
+    padding: 4px 0;
+  }
+  .manage-cat-name:focus { color: var(--ink); border-bottom: 1px dashed var(--line); }
+  .manage-cat-del {
+    background: none; border: none; color: var(--ink-faint);
+    font-family: var(--mono); font-size: 14px; cursor: pointer;
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .manage-cat-del:hover { color: var(--warn); }
+
+  .manage-item {
+    display: grid; grid-template-columns: 1fr 80px 28px; gap: 6px;
+    padding: 6px 0; align-items: center;
+  }
+  .manage-item input {
+    background: var(--bg); border: 1px solid var(--line); color: var(--ink);
+    padding: 8px 10px; border-radius: 6px; font-family: var(--mono); font-size: 12px;
+    outline: none; width: 100%;
+  }
+  .manage-item input:focus { border-color: var(--accent); }
+  .manage-item .del-btn {
+    background: none; border: 1px solid var(--line); color: var(--ink-faint);
+    border-radius: 6px; cursor: pointer; padding: 6px 0;
+    font-family: var(--mono); font-size: 14px;
+  }
+  .manage-item .del-btn:hover { color: var(--warn); border-color: var(--warn); }
+
+  .manage-add-item {
+    background: transparent; border: 1px dashed var(--line); color: var(--ink-dim);
+    padding: 8px; border-radius: 6px; font-family: var(--mono); font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; width: 100%;
+    margin-top: 8px;
+  }
+  .manage-add-item:hover { color: var(--accent); border-color: var(--accent); }
+
   /* trip history card */
   .trip-card {
     background: var(--bg-card); border: 1px solid var(--line-soft); border-radius: 10px;
@@ -376,6 +436,65 @@
   .day-cost-total .label { font-family: var(--mono); font-size: 10px; color: var(--ink-dim); letter-spacing: 0.1em; text-transform: uppercase; }
   .day-cost-total .val { font-family: var(--display); font-size: 22px; font-weight: 500; color: var(--accent); letter-spacing: -0.02em; }
   .day-cost-total .val .sub { font-family: var(--mono); font-size: 9.5px; color: var(--ink-faint); font-weight: 400; letter-spacing: 0.05em; margin-left: 4px; }
+
+  /* meal time stamp (when the meal was eaten) */
+  .meal-stamp {
+    display: inline-block; margin-left: 8px;
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.06em;
+    color: var(--accent); padding: 1px 6px; border: 1px solid var(--accent-glow);
+    border-radius: 99px;
+  }
+  .meal-actions {
+    margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .meal-edit {
+    background: transparent; border: 1px dashed var(--line); color: var(--ink-dim);
+    padding: 5px 10px; border-radius: 99px; cursor: pointer;
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .meal-edit:hover { color: var(--accent); border-color: var(--accent); }
+  .meal-edit.meal-revert { color: var(--ink-faint); }
+  .meal-edit-form {
+    margin-top: 10px; padding: 12px; background: var(--bg-elev);
+    border: 1px solid var(--line-soft); border-radius: 8px;
+  }
+  .meal-edit-input {
+    background: var(--bg); border: 1px solid var(--line); color: var(--ink);
+    padding: 10px 12px; border-radius: 6px; font-family: var(--body); font-size: 13.5px;
+    width: 100%; outline: none; resize: vertical; min-height: 52px; line-height: 1.4;
+  }
+  .meal-edit-input:focus { border-color: var(--accent); }
+  .meal-edit-actions { display: flex; gap: 6px; margin-top: 8px; }
+  .meal-edit-actions .btn.tiny { padding: 7px 14px; font-size: 10px; width: auto; }
+
+  .override-badge {
+    display: inline-block; margin-left: 6px; vertical-align: middle;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--good); background: rgba(143,175,110,0.12); padding: 2px 7px; border-radius: 99px;
+  }
+
+  /* toggle time badge */
+  .toggle-time {
+    color: var(--accent); font-weight: 600; margin-left: 2px;
+  }
+
+  /* water time chips */
+  .times-row {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px;
+    padding-top: 12px; border-top: 1px dashed var(--line-soft);
+  }
+  .times-row:empty { display: none; }
+  .time-chip {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em;
+    color: var(--ink-dim); background: var(--bg-elev);
+    padding: 4px 4px 4px 10px; border: 1px solid var(--line-soft); border-radius: 99px;
+  }
+  .time-chip-x {
+    background: none; border: none; color: var(--ink-faint); cursor: pointer;
+    font-size: 13px; line-height: 1; padding: 0 5px; border-radius: 50%;
+  }
+  .time-chip-x:hover { color: var(--warn); }
 </style>
 </head>
 <body>
@@ -470,6 +589,7 @@
         <div class="count"><span id="water-ml">0</span><em> ml</em></div>
         <div class="hint" id="water-pct">0% of target</div>
       </div>
+      <div class="times-row" id="water-times"></div>
     </div>
 
     <div class="card">
@@ -579,6 +699,21 @@
     </div>
 
     <div id="grocery-list"></div>
+
+    <div class="card" style="margin-top:16px;">
+      <div class="card-title" style="cursor:pointer;" id="manage-toggle">
+        <span>Customize list</span>
+        <span class="badge" id="manage-chevron">→</span>
+      </div>
+      <div id="manage-panel" style="display:none; margin-top:12px;">
+        <div class="note" style="margin-bottom:12px;">Add, rename, or remove items and categories. Meal cost estimates use the default item names, so renaming defaults may reduce accuracy (fallback prices will kick in instead).</div>
+        <div id="manage-list-inner"></div>
+        <div class="btn-row" style="margin-top:12px;">
+          <button class="btn secondary" onclick="addCategory()">+ Category</button>
+          <button class="btn ghost" onclick="resetGroceriesToDefault()">Reset defaults</button>
+        </div>
+      </div>
+    </div>
 
     <div class="card" style="margin-top:16px;">
       <div class="card-title"><span>Trip actions</span></div>
@@ -872,6 +1007,7 @@ function setupAuthGate() {
         if (data.currentTrip) localStorage.setItem('reset:currentTrip', JSON.stringify(data.currentTrip));
         if (data.tripDate) localStorage.setItem('reset:tripDate', JSON.stringify(data.tripDate));
         if (data.groceriesDone) localStorage.setItem('reset:groceries', JSON.stringify(data.groceriesDone));
+        if (data.userGroceries) localStorage.setItem('reset:userGroceries', JSON.stringify(data.userGroceries));
         if (data.dailyLogs) {
           Object.entries(data.dailyLogs).forEach(([k, v]) => localStorage.setItem('reset:' + k, JSON.stringify(v)));
         }
@@ -1131,12 +1267,23 @@ let state = {
   weights: [],
   measurements: [],
   groceriesDone: [],
-  currentTrip: {},    // { "cat:name": { qty: "1 kg", price: 12.50 } }
-  tripDate: null,     // date of current shopping trip
-  tripHistory: [],    // [ { date, items: {..}, total } ]
+  currentTrip: {},
+  tripDate: null,
+  tripHistory: [],
   openGroceryItem: null,
+  userGroceries: null,
+  manageOpen: false,
+  mealTimes: {},        // { mealIndex: "HH:MM" }  — today only, keyed under mealTimes:YYYY-MM-DD
+  waterTimes: [],       // array of "HH:MM" timestamps — today only
+  mealOverrides: {},    // { mealIndex: "I ate X instead" } — today only
+  editingMealIdx: null, // which meal is currently being edited
   selectedDay: dayName()
 };
+
+// Helper: returns the active grocery list (user's custom or default)
+function getGroceries() {
+  return state.userGroceries || GROCERIES;
+}
 
 function storageSet(key, value) {
   try { localStorage.setItem('reset:' + key, JSON.stringify(value)); } catch(e) { console.error('set', key, e); }
@@ -1159,6 +1306,10 @@ function loadState() {
   state.currentTrip = storageGet('currentTrip', {});
   state.tripDate = storageGet('tripDate', todayKey());
   state.tripHistory = storageGet('tripHistory', []);
+  state.userGroceries = storageGet('userGroceries', null);
+  state.mealTimes = storageGet(`mealTimes:${tKey}`, {});
+  state.waterTimes = storageGet(`waterTimes:${tKey}`, []);
+  state.mealOverrides = storageGet(`mealOverrides:${tKey}`, {});
 }
 
 // ============ INIT ============
@@ -1196,6 +1347,9 @@ function init() {
   });
   updateTripDateBadge();
 
+  // customize list toggle
+  document.getElementById('manage-toggle').addEventListener('click', toggleManagePanel);
+
   renderToday();
   renderWater();
   renderToggles();
@@ -1214,22 +1368,55 @@ function renderToday() {
   container.innerHTML = '';
   meals.forEach((m, i) => {
     const done = state.mealsDone.includes(i);
+    const timeStamp = state.mealTimes[i];
+    const override = state.mealOverrides[i];
+    const displayName = override ? override : m.name;
+    const displayDetail = override ? '<em>Replaced the planned meal</em>' : m.detail;
+
     const { cost, isEstimate } = estimateMealCost(m.name);
-    const costBadge = cost ? `<span class="meal-cost ${isEstimate ? 'estimate' : ''}">$${cost.toFixed(2)}</span>` : '';
+    const costBadge = (!override && cost) ? `<span class="meal-cost ${isEstimate ? 'estimate' : ''}">$${cost.toFixed(2)}</span>` : '';
+    const timeBadge = timeStamp ? `<span class="meal-stamp">${timeStamp}</span>` : '';
+
+    const isEditing = state.editingMealIdx === i;
+
     const el = document.createElement('div');
     el.className = 'meal' + (done ? ' done' : '');
     el.innerHTML = `
       <button class="meal-check ${done ? 'done' : ''}" data-i="${i}" aria-label="Toggle meal"></button>
       <div class="meal-body">
-        <div class="meal-time">${m.time}</div>
-        <div class="meal-name">${m.name}${costBadge}</div>
-        <div class="meal-detail">${m.detail}</div>
+        <div class="meal-time">${m.time}${timeBadge}</div>
+        <div class="meal-name">${displayName}${costBadge}${override ? '<span class="override-badge">custom</span>' : ''}</div>
+        <div class="meal-detail">${displayDetail}</div>
+        <div class="meal-actions">
+          <button class="meal-edit" data-i="${i}">${override ? 'Edit custom' : 'Ate something else?'}</button>
+          ${override ? `<button class="meal-edit meal-revert" data-revert="${i}">Use planned</button>` : ''}
+        </div>
+        ${isEditing ? `
+          <div class="meal-edit-form">
+            <textarea class="meal-edit-input" id="override-input-${i}" placeholder="e.g. 2 boiled eggs, 1 apple, 250 ml milk" rows="2">${override || ''}</textarea>
+            <div class="meal-edit-actions">
+              <button class="btn tiny" onclick="saveMealOverride(${i})">Save</button>
+              <button class="btn tiny secondary" onclick="cancelMealEdit()">Cancel</button>
+            </div>
+          </div>` : ''}
       </div>`;
     container.appendChild(el);
   });
   container.querySelectorAll('.meal-check').forEach(btn => {
-    btn.addEventListener('click', () => toggleMeal(parseInt(btn.dataset.i)));
+    btn.addEventListener('click', (e) => { e.stopPropagation(); toggleMeal(parseInt(btn.dataset.i)); });
   });
+  container.querySelectorAll('.meal-edit[data-i]').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.stopPropagation(); openMealEdit(parseInt(btn.dataset.i)); });
+  });
+  container.querySelectorAll('.meal-revert').forEach(btn => {
+    btn.addEventListener('click', (e) => { e.stopPropagation(); revertMealOverride(parseInt(btn.dataset.revert)); });
+  });
+
+  // focus the input if editing
+  if (state.editingMealIdx !== null) {
+    const inp = document.getElementById(`override-input-${state.editingMealIdx}`);
+    if (inp) { inp.focus(); inp.setSelectionRange(inp.value.length, inp.value.length); }
+  }
 
   // day total cost
   const { cost: dayCost, isEstimate: dayEst } = estimateDayCost(day);
@@ -1248,6 +1435,36 @@ function renderToday() {
   updateStats();
 }
 
+function openMealEdit(i) {
+  state.editingMealIdx = i;
+  renderToday();
+}
+function cancelMealEdit() {
+  state.editingMealIdx = null;
+  renderToday();
+}
+function saveMealOverride(i) {
+  const inp = document.getElementById(`override-input-${i}`);
+  if (!inp) return;
+  const val = inp.value.trim();
+  const tk = todayKey();
+  if (val) {
+    state.mealOverrides[i] = val;
+  } else {
+    delete state.mealOverrides[i];
+  }
+  storageSet(`mealOverrides:${tk}`, state.mealOverrides);
+  state.editingMealIdx = null;
+  renderToday();
+  toast(val ? 'Custom meal saved' : 'Override cleared');
+}
+function revertMealOverride(i) {
+  delete state.mealOverrides[i];
+  storageSet(`mealOverrides:${todayKey()}`, state.mealOverrides);
+  renderToday();
+  toast('Back to planned meal');
+}
+
 function updateMealProgress() {
   const day = dayName();
   const total = (MEALS[day] || []).length;
@@ -1256,11 +1473,24 @@ function updateMealProgress() {
   document.getElementById('meals-bar').style.width = (total ? (done/total*100) : 0) + '%';
 }
 
+function currentTimeHHMM() {
+  const d = new Date();
+  return String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0');
+}
+
 async function toggleMeal(i) {
   const idx = state.mealsDone.indexOf(i);
-  if (idx >= 0) state.mealsDone.splice(idx, 1);
-  else state.mealsDone.push(i);
-  storageSet(`meals:${todayKey()}`, state.mealsDone);
+  const tk = todayKey();
+  if (idx >= 0) {
+    // unchecking — remove timestamp too
+    state.mealsDone.splice(idx, 1);
+    delete state.mealTimes[i];
+  } else {
+    state.mealsDone.push(i);
+    state.mealTimes[i] = currentTimeHHMM();
+  }
+  storageSet(`meals:${tk}`, state.mealsDone);
+  storageSet(`mealTimes:${tk}`, state.mealTimes);
   renderToday();
 }
 
@@ -1278,10 +1508,41 @@ function renderWater() {
   document.getElementById('water-ml').textContent = state.water * 300;
   document.getElementById('water-pct').textContent = Math.round(state.water * 300 / 3000 * 100) + '% of target';
   document.getElementById('water-badge').textContent = `${state.water}/10 glasses`;
+  // render water times if container exists
+  const timesEl = document.getElementById('water-times');
+  if (timesEl) {
+    if (state.waterTimes.length === 0) {
+      timesEl.innerHTML = '';
+    } else {
+      timesEl.innerHTML = state.waterTimes.map((t, i) =>
+        `<span class="time-chip">${t}<button class="time-chip-x" onclick="removeWaterTime(${i})">×</button></span>`
+      ).join('');
+    }
+  }
 }
+
 async function setWater(v) {
-  state.water = Math.max(0, Math.min(10, v));
-  storageSet(`water:${todayKey()}`, state.water);
+  const newV = Math.max(0, Math.min(10, v));
+  const tk = todayKey();
+  if (newV > state.water) {
+    // adding glasses — stamp time for each new one
+    for (let k = state.water; k < newV; k++) state.waterTimes.push(currentTimeHHMM());
+  } else if (newV < state.water) {
+    // removing glasses — drop most recent timestamps
+    state.waterTimes = state.waterTimes.slice(0, newV);
+  }
+  state.water = newV;
+  storageSet(`water:${tk}`, state.water);
+  storageSet(`waterTimes:${tk}`, state.waterTimes);
+  renderWater();
+}
+
+function removeWaterTime(idx) {
+  state.waterTimes.splice(idx, 1);
+  state.water = state.waterTimes.length;
+  const tk = todayKey();
+  storageSet(`water:${tk}`, state.water);
+  storageSet(`waterTimes:${tk}`, state.waterTimes);
   renderWater();
 }
 
@@ -1289,9 +1550,29 @@ async function setWater(v) {
 function renderToggles() {
   document.querySelectorAll('[data-toggle]').forEach(sw => {
     const key = sw.dataset.toggle;
-    sw.classList.toggle('on', !!state.toggles[key]);
+    const val = state.toggles[key];
+    sw.classList.toggle('on', !!(val && (val === true || val.done)));
+    // render time chip next to toggle row if present
+    const row = sw.closest('.toggle-row');
+    if (row) {
+      const existing = row.querySelector('.toggle-time');
+      if (existing) existing.remove();
+      if (val && val.time) {
+        const chip = document.createElement('span');
+        chip.className = 'toggle-time';
+        chip.textContent = val.time;
+        row.querySelector('.lbl-sub').appendChild(document.createTextNode(' · '));
+        row.querySelector('.lbl-sub').appendChild(chip);
+      }
+    }
     sw.onclick = async () => {
-      state.toggles[key] = !state.toggles[key];
+      const cur = state.toggles[key];
+      const isOn = !!(cur && (cur === true || cur.done));
+      if (isOn) {
+        delete state.toggles[key];
+      } else {
+        state.toggles[key] = { done: true, time: currentTimeHHMM() };
+      }
       storageSet(`toggles:${todayKey()}`, state.toggles);
       renderToggles();
     };
@@ -1390,12 +1671,41 @@ function renderRecipes() {
 }
 
 // ============ GROCERIES ============
+// Split a stored qty string like "1.5 kg" into { amount: "1.5", unit: "kg" }
+function splitQty(qtyStr) {
+  if (!qtyStr) return { amount: '', unit: '' };
+  const s = String(qtyStr).trim();
+  const m = s.match(/^([\d.,]+)\s*(.*)$/);
+  if (!m) return { amount: '', unit: '' };
+  return { amount: m[1], unit: (m[2] || '').trim() };
+}
+
+// Unit options shown in the dropdown
+const UNIT_OPTIONS = ['kg','g','L','ml','ea','pack','loaf','bunch','head','bottle','tub','can','dozen'];
+
+// Pick a sensible default unit from the planned qty string, or item type
+function defaultUnit(plannedQty, itemId) {
+  const parsed = splitQty(plannedQty);
+  if (parsed.unit) {
+    // normalize casing for L
+    if (parsed.unit.toLowerCase() === 'l') return 'L';
+    if (UNIT_OPTIONS.map(u => u.toLowerCase()).includes(parsed.unit.toLowerCase())) {
+      return UNIT_OPTIONS.find(u => u.toLowerCase() === parsed.unit.toLowerCase());
+    }
+  }
+  // no unit in planned qty means it's a count
+  const units = GROCERY_UNITS[itemId];
+  if (units && units.u) return 'ea';
+  return 'kg';
+}
+
 function renderGroceries() {
   const c = document.getElementById('grocery-list');
   c.innerHTML = '';
   let total = 0, done = 0, spent = 0;
 
-  GROCERIES.forEach(cat => {
+  const list = getGroceries();
+  list.forEach(cat => {
     const title = document.createElement('div');
     title.className = 'g-cat';
     title.textContent = cat.cat;
@@ -1417,6 +1727,12 @@ function renderGroceries() {
         ? `<span class="g-sub"><em>${trip.qty || '—'}</em>${trip.price ? ' · $' + (+trip.price).toFixed(2) : ''}</span>`
         : '';
 
+      const { amount, unit } = splitQty(trip.qty);
+      const currentUnit = unit || defaultUnit(item.q, id);
+      const unitOptions = UNIT_OPTIONS.map(u =>
+        `<option value="${u}" ${u === currentUnit ? 'selected' : ''}>${u}</option>`
+      ).join('');
+
       row.innerHTML = `
         <div class="g-row" data-id="${id}">
           <div class="g-check"></div>
@@ -1430,14 +1746,14 @@ function renderGroceries() {
           <div class="g-expand-inner">
             <div>
               <label>Qty bought</label>
-              <input type="text" class="qty-in" data-id="${id}" placeholder="${item.q}" value="${trip.qty || ''}">
+              <div class="qty-combo">
+                <input type="number" step="0.001" inputmode="decimal" class="qty-amount" data-id="${id}" placeholder="0" value="${amount}">
+                <select class="qty-unit" data-id="${id}">${unitOptions}</select>
+              </div>
             </div>
             <div>
               <label>Price paid ($)</label>
               <input type="number" step="0.01" inputmode="decimal" class="price-in" data-id="${id}" placeholder="0.00" value="${trip.price || ''}">
-            </div>
-            <div class="g-expand-actions">
-              <span id="est-${id.replace(/[^a-z0-9]/gi,'_')}">${trip.price ? '$' + (+trip.price).toFixed(2) : ''}</span>
             </div>
           </div>
         </div>`;
@@ -1445,16 +1761,17 @@ function renderGroceries() {
     });
   });
 
-  // wire up rows - tap check OR tap row body to toggle expand
+  // wire up rows
   c.querySelectorAll('.g-row').forEach(row => {
     const id = row.dataset.id;
     const check = row.querySelector('.g-check');
     check.onclick = (e) => { e.stopPropagation(); toggleGrocery(id); };
     row.onclick = () => toggleExpand(id);
   });
-  c.querySelectorAll('.qty-in').forEach(inp => {
-    inp.onclick = (e) => e.stopPropagation();
-    inp.oninput = (e) => updateTripItem(e.target.dataset.id, 'qty', e.target.value);
+  c.querySelectorAll('.qty-amount, .qty-unit').forEach(el => {
+    el.onclick = (e) => e.stopPropagation();
+    el.oninput = (e) => updateTripQty(e.target.dataset.id);
+    el.onchange = (e) => updateTripQty(e.target.dataset.id);
   });
   c.querySelectorAll('.price-in').forEach(inp => {
     inp.onclick = (e) => e.stopPropagation();
@@ -1474,6 +1791,16 @@ function renderGroceries() {
     vsEl.innerHTML = (vsBudget > 0 ? '+' : '') + '$' + Math.abs(vsBudget).toFixed(0);
     vsEl.style.color = vsBudget > 0 ? 'var(--warn)' : 'var(--good)';
   }
+}
+
+function updateTripQty(id) {
+  const amountEl = document.querySelector(`.qty-amount[data-id="${CSS.escape(id)}"]`);
+  const unitEl = document.querySelector(`.qty-unit[data-id="${CSS.escape(id)}"]`);
+  if (!amountEl) return;
+  const amount = amountEl.value.trim();
+  const unit = unitEl ? unitEl.value : '';
+  const qty = amount ? (amount + (unit ? ' ' + unit : '')) : '';
+  updateTripItem(id, 'qty', qty);
 }
 
 function updateTripItem(id, field, value) {
@@ -1531,7 +1858,7 @@ function saveShoppingTrip() {
 
   // enrich trip items with category info for analytics
   const enriched = {};
-  GROCERIES.forEach(cat => {
+  getGroceries().forEach(cat => {
     cat.items.forEach(item => {
       const id = cat.cat + ':' + item.n;
       if (state.currentTrip[id]) {
@@ -1579,6 +1906,152 @@ function resetGroceries() {
   renderGroceries();
   toast('Trip cleared');
 }
+
+// ============ LIST CUSTOMIZATION ============
+// Deep clone GROCERIES into userGroceries on first customization
+function ensureUserGroceries() {
+  if (!state.userGroceries) {
+    state.userGroceries = JSON.parse(JSON.stringify(GROCERIES));
+  }
+}
+
+function saveUserGroceries() {
+  storageSet('userGroceries', state.userGroceries);
+}
+
+function toggleManagePanel() {
+  state.manageOpen = !state.manageOpen;
+  const panel = document.getElementById('manage-panel');
+  const chev = document.getElementById('manage-chevron');
+  panel.style.display = state.manageOpen ? 'block' : 'none';
+  chev.textContent = state.manageOpen ? '↓' : '→';
+  if (state.manageOpen) renderManagePanel();
+}
+
+function renderManagePanel() {
+  const c = document.getElementById('manage-list-inner');
+  const list = getGroceries();
+  c.innerHTML = '';
+  list.forEach((cat, ci) => {
+    const catEl = document.createElement('div');
+    catEl.className = 'manage-cat';
+    let itemsHtml = '';
+    cat.items.forEach((item, ii) => {
+      itemsHtml += `
+        <div class="manage-item">
+          <input type="text" placeholder="Item name" data-ci="${ci}" data-ii="${ii}" data-field="n" value="${escapeHtml(item.n)}">
+          <input type="text" placeholder="Qty" data-ci="${ci}" data-ii="${ii}" data-field="q" value="${escapeHtml(item.q)}">
+          <button class="del-btn" data-ci="${ci}" data-ii="${ii}" title="Remove item">×</button>
+        </div>`;
+    });
+    catEl.innerHTML = `
+      <div class="manage-cat-head">
+        <input type="text" class="manage-cat-name" data-ci="${ci}" value="${escapeHtml(cat.cat)}">
+        <button class="manage-cat-del" data-ci="${ci}" title="Remove category">×</button>
+      </div>
+      ${itemsHtml}
+      <button class="manage-add-item" data-ci="${ci}">+ Add item</button>`;
+    c.appendChild(catEl);
+  });
+
+  // wire up events
+  c.querySelectorAll('.manage-cat-name').forEach(inp => {
+    inp.onchange = (e) => renameCategory(+e.target.dataset.ci, e.target.value);
+  });
+  c.querySelectorAll('.manage-cat-del').forEach(btn => {
+    btn.onclick = (e) => removeCategory(+e.currentTarget.dataset.ci);
+  });
+  c.querySelectorAll('.manage-item input').forEach(inp => {
+    inp.onchange = (e) => editItem(+e.target.dataset.ci, +e.target.dataset.ii, e.target.dataset.field, e.target.value);
+  });
+  c.querySelectorAll('.manage-item .del-btn').forEach(btn => {
+    btn.onclick = (e) => removeItem(+e.currentTarget.dataset.ci, +e.currentTarget.dataset.ii);
+  });
+  c.querySelectorAll('.manage-add-item').forEach(btn => {
+    btn.onclick = (e) => addItem(+e.currentTarget.dataset.ci);
+  });
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+
+function renameCategory(ci, newName) {
+  newName = newName.trim();
+  if (!newName) { renderManagePanel(); return; }
+  ensureUserGroceries();
+  state.userGroceries[ci].cat = newName;
+  saveUserGroceries();
+  renderGroceries();
+  toast('Category renamed');
+}
+
+function removeCategory(ci) {
+  const list = getGroceries();
+  const catName = list[ci].cat;
+  if (!confirm(`Remove category "${catName}" and all its items?`)) return;
+  ensureUserGroceries();
+  state.userGroceries.splice(ci, 1);
+  saveUserGroceries();
+  renderGroceries();
+  renderManagePanel();
+  toast('Category removed');
+}
+
+function addCategory() {
+  const name = prompt('New category name:');
+  if (!name || !name.trim()) return;
+  ensureUserGroceries();
+  state.userGroceries.push({ cat: name.trim(), items: [] });
+  saveUserGroceries();
+  renderGroceries();
+  renderManagePanel();
+  toast('Category added');
+}
+
+function editItem(ci, ii, field, value) {
+  value = value.trim();
+  if (!value && field === 'n') { renderManagePanel(); return; }
+  ensureUserGroceries();
+  state.userGroceries[ci].items[ii][field] = value;
+  saveUserGroceries();
+  renderGroceries();
+}
+
+function removeItem(ci, ii) {
+  const list = getGroceries();
+  const itemName = list[ci].items[ii].n;
+  if (!confirm(`Remove "${itemName}"?`)) return;
+  ensureUserGroceries();
+  state.userGroceries[ci].items.splice(ii, 1);
+  saveUserGroceries();
+  renderGroceries();
+  renderManagePanel();
+  toast('Item removed');
+}
+
+function addItem(ci) {
+  const name = prompt('New item name:');
+  if (!name || !name.trim()) return;
+  const qty = prompt('Quantity (e.g. "500 g", "2 L", "1 pack"):', '1');
+  if (qty === null) return;
+  ensureUserGroceries();
+  state.userGroceries[ci].items.push({ n: name.trim(), q: (qty || '1').trim() });
+  saveUserGroceries();
+  renderGroceries();
+  renderManagePanel();
+  toast('Item added');
+}
+
+function resetGroceriesToDefault() {
+  if (!confirm('Reset the grocery list to defaults? Your custom items will be removed, but trip history and prices stay safe.')) return;
+  state.userGroceries = null;
+  localStorage.removeItem('reset:userGroceries');
+  renderGroceries();
+  renderManagePanel();
+  toast('List reset to defaults');
+}
+
 
 // ============ SPENDING ANALYTICS ============
 function getISOWeek(dateStr) {
@@ -1979,14 +2452,21 @@ function drawChart() {
 }
 
 async function resetDay() {
-  if (!confirm("Reset today's meals, water, and toggles?")) return;
+  if (!confirm("Reset today's meals, water, toggles, times, and meal overrides?")) return;
   const tk = todayKey();
   state.mealsDone = [];
   state.water = 0;
   state.toggles = {};
+  state.mealTimes = {};
+  state.waterTimes = [];
+  state.mealOverrides = {};
+  state.editingMealIdx = null;
   storageSet(`meals:${tk}`, []);
   storageSet(`water:${tk}`, 0);
   storageSet(`toggles:${tk}`, {});
+  storageSet(`mealTimes:${tk}`, {});
+  storageSet(`waterTimes:${tk}`, []);
+  storageSet(`mealOverrides:${tk}`, {});
   renderToday();
   renderWater();
   renderToggles();
@@ -2002,19 +2482,29 @@ function saveDailyLog() {
 
   // collect today's data
   const mealsDone = storageGet(`meals:${tk}`, []);
+  const mealTimes = storageGet(`mealTimes:${tk}`, {});
+  const mealOverrides = storageGet(`mealOverrides:${tk}`, {});
   const water = storageGet(`water:${tk}`, 0);
+  const waterTimes = storageGet(`waterTimes:${tk}`, []);
   const toggles = storageGet(`toggles:${tk}`, {});
   const todayWeight = state.weights.find(w => w.date === tk);
   const todayMeasure = state.measurements.find(m => m.date === tk);
+
+  const toggleMark = (k) => {
+    const v = toggles[k];
+    if (!v) return '[ ]';
+    return v.time ? `[✓ ${v.time}]` : '[✓]';
+  };
 
   let log = '';
   log += '════════════════════════════════════════\n';
   log += `  RESET — DAILY LOG\n`;
   log += `  ${dayFull}, ${tk}\n`;
+  log += `  generated ${currentTimeHHMM()}\n`;
   log += '════════════════════════════════════════\n\n';
 
   log += `WEIGHT\n`;
-  log += todayWeight ? `  ${todayWeight.weight} kg (logged today)\n\n` : `  not logged today\n\n`;
+  log += todayWeight ? `  ${todayWeight.weight} kg\n\n` : `  not logged today\n\n`;
 
   if (todayMeasure) {
     log += `MEASUREMENTS\n`;
@@ -2025,23 +2515,36 @@ function saveDailyLog() {
 
   log += `MEALS  (${mealsDone.length}/${meals.length} completed)\n`;
   meals.forEach((m, i) => {
-    const mark = mealsDone.includes(i) ? '[✓]' : '[ ]';
+    const eaten = mealsDone.includes(i);
+    const eatenAt = mealTimes[i];
+    const override = mealOverrides[i];
+    const mark = eaten ? (eatenAt ? `[✓ ${eatenAt}]` : '[✓]') : '[ ]';
     log += `  ${mark} ${m.time}\n`;
-    log += `      ${m.name}\n`;
-    log += `      ${m.detail}\n\n`;
+    if (override) {
+      log += `      ate: ${override}\n`;
+      log += `      (planned: ${m.name})\n\n`;
+    } else {
+      log += `      ${m.name}\n`;
+      log += `      ${m.detail}\n\n`;
+    }
   });
 
   log += `WATER\n`;
   log += `  ${water} / 10 glasses  (${water * 300} ml / 3000 ml)\n`;
-  log += `  ${Math.round(water * 300 / 3000 * 100)}% of daily target\n\n`;
+  log += `  ${Math.round(water * 300 / 3000 * 100)}% of daily target\n`;
+  if (waterTimes.length > 0) {
+    log += `  times: ${waterTimes.join(' · ')}\n`;
+  }
+  log += '\n';
 
   log += `MOVEMENT\n`;
-  log += `  ${toggles.walk_am ? '[✓]' : '[ ]'} morning walk (20 min)\n`;
-  log += `  ${toggles.walk_pm ? '[✓]' : '[ ]'} evening walk (30 min)\n`;
-  log += `  ${toggles.strength ? '[✓]' : '[ ]'} strength session\n\n`;
+  log += `  ${toggleMark('walk_am')} morning walk (20 min)\n`;
+  log += `  ${toggleMark('walk_pm')} evening walk (30 min)\n`;
+  log += `  ${toggleMark('strength')} strength session\n\n`;
 
   // completion summary
-  const score = mealsDone.length + water + (toggles.walk_am?1:0) + (toggles.walk_pm?1:0) + (toggles.strength?1:0);
+  const done = (k) => { const v = toggles[k]; return !!(v && (v === true || v.done)); };
+  const score = mealsDone.length + water + (done('walk_am')?1:0) + (done('walk_pm')?1:0) + (done('strength')?1:0);
   const maxScore = meals.length + 10 + 3;
   log += '────────────────────────────────────────\n';
   log += `  Day score: ${score} / ${maxScore}\n`;
@@ -2059,7 +2562,7 @@ function saveDailyLog() {
 
 function exportData() {
   const data = {
-    schema: 'reset-v2',
+    schema: 'reset-v3',
     exportedAt: new Date().toISOString(),
     weights: state.weights,
     measurements: state.measurements,
@@ -2067,14 +2570,17 @@ function exportData() {
     currentTrip: state.currentTrip,
     tripDate: state.tripDate,
     groceriesDone: state.groceriesDone,
+    userGroceries: state.userGroceries,
     dailyLogs: {}
   };
-  // pull every daily record
+  // pull every daily record (meals, water, toggles, mealTimes, waterTimes, mealOverrides)
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
     if (!k || !k.startsWith('reset:')) continue;
     const stripped = k.substring(6);
-    if (stripped.startsWith('meals:') || stripped.startsWith('water:') || stripped.startsWith('toggles:')) {
+    if (stripped.startsWith('meals:') || stripped.startsWith('water:') ||
+        stripped.startsWith('toggles:') || stripped.startsWith('mealTimes:') ||
+        stripped.startsWith('waterTimes:') || stripped.startsWith('mealOverrides:')) {
       try { data.dailyLogs[stripped] = JSON.parse(localStorage.getItem(k)); } catch(e) {}
     }
   }
@@ -2117,6 +2623,10 @@ function importData(event) {
         state.tripHistory = Object.values(byId).sort((a,b) => b.date.localeCompare(a.date));
         storageSet('tripHistory', state.tripHistory);
       }
+      if (data.userGroceries) {
+        state.userGroceries = data.userGroceries;
+        storageSet('userGroceries', state.userGroceries);
+      }
       if (data.dailyLogs) {
         Object.entries(data.dailyLogs).forEach(([k, v]) => storageSet(k, v));
       }
@@ -2143,7 +2653,7 @@ async function wipeAll() {
     }
     toRemove.forEach(k => localStorage.removeItem(k));
   } catch (e) { console.error(e); }
-  state = { mealsDone: [], water: 0, toggles: {}, weights: [], measurements: [], groceriesDone: [], currentTrip: {}, tripDate: todayKey(), tripHistory: [], openGroceryItem: null, selectedDay: dayName() };
+  state = { mealsDone: [], water: 0, toggles: {}, weights: [], measurements: [], groceriesDone: [], currentTrip: {}, tripDate: todayKey(), tripHistory: [], openGroceryItem: null, userGroceries: null, manageOpen: false, mealTimes: {}, waterTimes: [], mealOverrides: {}, selectedDay: dayName() };
   renderToday(); renderWater(); renderToggles(); renderGroceries(); renderProgress(); drawChart();
   const tde = document.getElementById('trip-date');
   if (tde) tde.value = todayKey();
@@ -2167,35 +2677,67 @@ function lockApp() {
 // ============ MEAL COST ESTIMATION ============
 // Build a price-per-unit map by looking at trip history.
 // Returns: { "Category:Item": { perGram: 0.02, perUnit: 1.50 } }
+// Parse a quantity string into a canonical amount for the expected unit type.
+// Returns a number (grams if expectedUnit === 'g', count if 'u'), or null if unparseable.
+function parseQty(qtyStr, expectedUnit) {
+  if (!qtyStr) return null;
+  const s = String(qtyStr).toLowerCase().trim();
+  const num = parseFloat(s);
+  if (isNaN(num) || num <= 0) return null;
+  // Strip leading numbers/spaces/dots to get the unit suffix
+  const suffix = s.replace(/^[\d.,\s]+/, '').trim();
+
+  if (expectedUnit === 'g') {
+    // Item measured in grams (or ml for liquids — we treat 1 ml ≈ 1 g)
+    if (/^(kg|kilos?|kilograms?)$/.test(suffix)) return num * 1000;
+    if (/^(l|litres?|liters?)$/.test(suffix)) return num * 1000;
+    if (/^(g|grams?|gm|gms)$/.test(suffix)) return num;
+    if (/^(ml|millilitres?|milliliters?)$/.test(suffix)) return num;
+    if (suffix === '') {
+      // Bare number: assume kg/L if small, grams/ml if large
+      return num < 20 ? num * 1000 : num;
+    }
+    return null; // unknown unit — refuse to guess
+  }
+  if (expectedUnit === 'u') {
+    // Item counted in pieces
+    if (/^(ea|each|pc|pcs|piece|pieces|pack|packs|bunch|bunches|head|heads|loaf|loaves|bottle|bottles|tub|tubs|can|cans|dozen|doz)$/.test(suffix)) return num;
+    if (suffix === '') return num;
+    // User gave a weight for a count item — bail, use planned qty instead
+    return null;
+  }
+  return null;
+}
+
 function buildPriceIndex() {
   const index = {};
-  // aggregate all historical purchases of each item
   state.tripHistory.forEach(trip => {
     Object.entries(trip.items || {}).forEach(([id, it]) => {
       const price = parseFloat(it.price);
       if (!price || price <= 0) return;
-      if (!index[id]) index[id] = { totalPrice: 0, totalG: 0, totalU: 0 };
       const units = GROCERY_UNITS[id];
       if (!units) return;
-      // if we have actual qty entered, try to parse it
-      const qtyNum = parseFloat(it.qty);
-      if (qtyNum && !isNaN(qtyNum)) {
-        // interpret qty in the same unit type the grocery item uses
-        if (units.g) {
-          // if qty looks like kg, convert
-          const qtyLower = (it.qty || '').toLowerCase();
-          const grams = qtyLower.includes('kg') ? qtyNum * 1000 : (qtyLower.includes('g') ? qtyNum : qtyNum);
+      if (!index[id]) index[id] = { totalPrice: 0, totalG: 0, totalU: 0 };
+
+      if (units.g) {
+        const grams = parseQty(it.qty, 'g');
+        if (grams && grams > 0) {
           index[id].totalPrice += price;
           index[id].totalG += grams;
-        } else if (units.u) {
+        } else {
+          // Fall back to planned qty (prevents garbage data from poisoning estimates)
           index[id].totalPrice += price;
-          index[id].totalU += qtyNum;
+          index[id].totalG += units.g;
         }
-      } else {
-        // assume planned qty was purchased
-        index[id].totalPrice += price;
-        if (units.g) index[id].totalG += units.g;
-        if (units.u) index[id].totalU += units.u;
+      } else if (units.u) {
+        const count = parseQty(it.qty, 'u');
+        if (count && count > 0) {
+          index[id].totalPrice += price;
+          index[id].totalU += count;
+        } else {
+          index[id].totalPrice += price;
+          index[id].totalU += units.u;
+        }
       }
     });
   });
@@ -2205,6 +2747,11 @@ function buildPriceIndex() {
       perGram: v.totalG > 0 ? v.totalPrice / v.totalG : null,
       perUnit: v.totalU > 0 ? v.totalPrice / v.totalU : null
     };
+  });
+  // Sanity filter: if a derived price looks nonsensical (e.g. > $100/g), ignore it
+  Object.keys(result).forEach(id => {
+    if (result[id].perGram && result[id].perGram > 1) result[id].perGram = null;
+    if (result[id].perUnit && result[id].perUnit > 100) result[id].perUnit = null;
   });
   return result;
 }
